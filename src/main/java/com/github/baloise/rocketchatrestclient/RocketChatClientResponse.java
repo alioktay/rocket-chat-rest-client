@@ -23,6 +23,7 @@ public class RocketChatClientResponse {
     private Integration[] integrations;
     private Integration integration;
     private AuthData data;
+    private Counter counter;
 
     public void setSuccess(boolean result) {
         this.success = result;
@@ -102,6 +103,16 @@ public class RocketChatClientResponse {
         return this.user;
     }
 
+    
+    public void setCounter(Counter counter) {
+        this.counter = counter;
+    }
+
+    public Counter getCounter() {
+        return this.counter;
+    }
+
+    
     public boolean hasUser() {
         return this.user != null;
     }
