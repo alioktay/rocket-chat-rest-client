@@ -57,6 +57,9 @@ public class RocketChatClientCallBuilder {
 
     
     public Counter buildCallCounter(RocketChatRestApiV1 call, RocketChatQueryParams queryParams) throws IOException {
+        if (call.requiresAuth() && (this.authToken.isEmpty() || this.userId.isEmpty())) {
+            this.login();
+        }
         GetRequest req = Unirest.get(serverUrl + call.getMethodName());
 
         if (call.requiresAuth()) {
