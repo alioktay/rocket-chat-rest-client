@@ -21,12 +21,12 @@ public class RocketChatRestApiV1Channels {
     }
 
     public Counter counter(Channel channel) throws IOException {
-        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.ChannelsCounters, new RocketChatQueryParams("roomId", channel.getId()));
+        Counter res = this.callBuilder.buildCallCounter(RocketChatRestApiV1.ChannelsCounters, new RocketChatQueryParams("roomId", channel.getId()));
 
-        if (!res.isSuccessful())
-            throw new IOException("Some error: \"" + res.getError() + "\"");
+        if (!res.isSuccess())
+            throw new IOException("Some error happened");
 
-        return res.getCounter();
+        return res;
     }
 
     /**
