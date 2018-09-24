@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Date;
 
 import com.github.baloise.rocketchatrestclient.model.Channel;
+import com.github.baloise.rocketchatrestclient.model.Counter;
+import com.github.baloise.rocketchatrestclient.model.Group;
 import com.github.baloise.rocketchatrestclient.model.Integration;
 import com.github.baloise.rocketchatrestclient.model.Room;
 import com.github.baloise.rocketchatrestclient.model.User;
@@ -16,6 +18,16 @@ public class RocketChatRestApiV1Channels {
 
     protected RocketChatRestApiV1Channels(RocketChatClientCallBuilder callBuilder) {
         this.callBuilder = callBuilder;
+    }
+
+
+    public Counter counter(Channel channel) throws IOException {
+        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.GroupsCounter, null, channel);
+
+        if (!res.isSuccessful())
+            throw new IOException("Some error: \"" + res.getError() + "\"");
+
+        return res.getCounter();
     }
 
     /**
