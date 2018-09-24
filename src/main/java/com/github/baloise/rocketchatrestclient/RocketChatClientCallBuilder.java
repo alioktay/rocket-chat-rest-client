@@ -13,6 +13,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
 import com.mashape.unirest.request.HttpRequestWithBody;
+import com.github.baloise.rocketchatrestclient.model.Counter;
 
 /**
  * The call builder for the {@link RocketChatClient} and is only supposed to be used internally.
