@@ -69,6 +69,17 @@ public class RocketChatRestApiV1Groups {
 
         return res.getGroup();
     }
+    
+    
+    
+    public Counter counter(Group group) throws IOException {
+        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.GroupsCounter, null, group);
+
+        if (!res.isSuccessful())
+            throw new IOException("Some error: \"" + res.getError() + "\"");
+        
+        return res.getCounter();
+    }
 
     /**
      * Retrieves the information about the group.
@@ -247,14 +258,6 @@ public class RocketChatRestApiV1Groups {
 
         if (!res.isSuccessful())
             throw new IOException("The call to unarchive the Group was unsuccessful: \"" + res.getError() + "\"");
-    }
-    
-    
-    public void counter(Group group) throws IOException {
-        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.GroupsCounter, null, group);
-
-        if (!res.isSuccessful())
-            throw new IOException("Some error: \"" + res.getError() + "\"");
     }
 
     public void addOwner(Group group, User user) throws IOException {
