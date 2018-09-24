@@ -5,7 +5,6 @@ import java.io.IOException;
 import com.github.baloise.rocketchatrestclient.model.Group;
 import com.github.baloise.rocketchatrestclient.model.Room;
 import com.github.baloise.rocketchatrestclient.model.User;
-import com.github.baloise.rocketchatrestclient.model.Counter;
 import com.github.baloise.rocketchatrestclient.requests.RoomAndUserRequest;
 import com.github.baloise.rocketchatrestclient.requests.RoomCreateRequest;
 
@@ -71,17 +70,6 @@ public class RocketChatRestApiV1Groups {
         return res.getGroup();
     }
     
-    
-    
-    public Counter counter(Group group) throws IOException {
-        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.GroupsCounter, null, group);
-
-        if (!res.isSuccessful())
-            throw new IOException("Some error: \"" + res.getError() + "\"");
-        
-        return res.getCounter();
-    }
-
     /**
      * Retrieves the information about the group.
      *
