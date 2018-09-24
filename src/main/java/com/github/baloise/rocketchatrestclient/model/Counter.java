@@ -1,4 +1,4 @@
-package com.unycom.ipxl.shared.integration.chat;
+package com.github.baloise.rocketchatrestclient.model;
 
 import java.util.Date;
 
