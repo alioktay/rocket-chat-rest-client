@@ -248,6 +248,14 @@ public class RocketChatRestApiV1Groups {
         if (!res.isSuccessful())
             throw new IOException("The call to unarchive the Group was unsuccessful: \"" + res.getError() + "\"");
     }
+    
+    
+    public void counter(Group group) throws IOException {
+        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.GroupsCounter, null, group);
+
+        if (!res.isSuccessful())
+            throw new IOException("Some error: \"" + res.getError() + "\"");
+    }
 
     public void addOwner(Group group, User user) throws IOException {
         RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.GroupsAddOwner, null, new RoomAndUserRequest(group.getId(), user.getId()));
