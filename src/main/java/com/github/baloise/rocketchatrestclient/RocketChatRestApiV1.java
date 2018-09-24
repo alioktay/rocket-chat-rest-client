@@ -59,6 +59,8 @@ public enum RocketChatRestApiV1 {
     GroupsUnarchive("groups.unarchive", HttpMethods.POST, true),
     /** Closes a group. */
     GroupsClose("groups.close", HttpMethods.POST, true),
+    /** Group Counters. */
+    GroupsCounter("groups.counters", HttpMethods.GET, true),
     /** Invites a user to join a group **/
     GroupsInvite("groups.invite", HttpMethods.POST, true),
     /** Removes a user from the group **/
