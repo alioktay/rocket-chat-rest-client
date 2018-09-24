@@ -54,6 +54,31 @@ public class RocketChatClientCallBuilder {
         return this.buildCall(call, null, null);
     }
 
+    
+    public Counter buildCallCounter(RocketChatRestApiV1 call, RocketChatQueryParams queryParams) throws IOException {
+        GetRequest req = Unirest.get(serverUrl + call.getMethodName());
+
+        if (call.requiresAuth()) {
+            req.header("X-Auth-Token", authToken);
+            req.header("X-User-Id", userId);
+        }
+
+        if (queryParams != null && queryParams.get() != null && !queryParams.isEmpty()) {
+            for (Entry<? extends String, ? extends String> e : queryParams.get().entrySet()) {
+                req.queryString(e.getKey(), e.getValue());
+            }
+        }
+
+        try {
+            HttpResponse<String> res = req.asString();
+
+            return objectMapper.readValue(res.getBody(), Counter.class);
+        } catch (UnirestException e) {
+            throw new IOException(e);
+        }
+    }
+
+    
     protected RocketChatClientResponse buildCall(RocketChatRestApiV1 call, RocketChatQueryParams queryParams) throws IOException {
         return this.buildCall(call, queryParams, null);
     }
