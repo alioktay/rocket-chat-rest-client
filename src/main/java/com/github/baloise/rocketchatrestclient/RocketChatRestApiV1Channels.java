@@ -20,9 +20,8 @@ public class RocketChatRestApiV1Channels {
         this.callBuilder = callBuilder;
     }
 
-
     public Counter counter(Channel channel) throws IOException {
-        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.GroupsCounter, null, channel);
+        RocketChatClientResponse res = this.callBuilder.buildCall(RocketChatRestApiV1.ChannelsCounters, null, channel);
 
         if (!res.isSuccessful())
             throw new IOException("Some error: \"" + res.getError() + "\"");
