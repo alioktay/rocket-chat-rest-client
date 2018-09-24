@@ -25,6 +25,8 @@ public enum RocketChatRestApiV1 {
     /** Deletes the <strong>public</strong> channel from the server. */
     ChannelsDelete("channels.delete", HttpMethods.POST, true),
     ChannelsGetIntegrations("channels.getIntegrations", HttpMethods.GET, true),
+    /** Group Counters. */
+    ChannelsCounters("channels.counters", HttpMethods.GET, true),
     /** Retrieves a <strong>public</strong> channel's information. */
     ChannelsInfo("channels.info", HttpMethods.GET, true),
     /** Retrieves a list of all the <strong>public</strong> channels. */
@@ -59,8 +61,6 @@ public enum RocketChatRestApiV1 {
     GroupsUnarchive("groups.unarchive", HttpMethods.POST, true),
     /** Closes a group. */
     GroupsClose("groups.close", HttpMethods.POST, true),
-    /** Group Counters. */
-    GroupsCounter("groups.counters", HttpMethods.GET, true),
     /** Invites a user to join a group **/
     GroupsInvite("groups.invite", HttpMethods.POST, true),
     /** Removes a user from the group **/
